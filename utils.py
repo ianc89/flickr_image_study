@@ -61,7 +61,7 @@ def generate_similar_image(x, ind, X_train, text=False):
 	# Save
 	img_name = x.name.split("/")[-1]
 	if text:
-		plt.savefig(f"similar_text/similar_{img_name}.pdf")
+		plt.savefig(f"similar_text/similar_{img_name}.png")
 	else:		
-		plt.savefig(f"similar_images/similar_{img_name}.pdf")
+		plt.savefig(f"similar_images/similar_{img_name}.png")
 
