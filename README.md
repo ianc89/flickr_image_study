@@ -14,6 +14,8 @@ Data taken from https://www.kaggle.com/hsankesara/flickr-image-dataset/download
 | `image_clustering_knn.py` | Processing to perform k-nearest neighbour algorithm |
 | `text_embedding.py` | Processing to generate text embedding space weights |
 | `vocab_clustering_knn.py` | Processing to perform knn using word embeddings |
+| `utils.py` | Useful utility functions to be loaded and reduce bloat across scripts |
+| `embedding.npz` | Text embedding dictionary stored in npz format |
 
 # Results
 
