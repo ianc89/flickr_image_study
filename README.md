@@ -17,6 +17,10 @@ Data taken from https://www.kaggle.com/hsankesara/flickr-image-dataset/download
 | `utils.py` | Useful utility functions to be loaded and reduce bloat across scripts |
 | `embedding.npz` | Text embedding dictionary stored in npz format |
 
+# Usage
+
+With the flickr dataset downloaded and placed in a `data/` folder, these scripts can be run simply with `python3 image_clustering_knn.py`, `python3 text_embedding.py` and `python3 vocab_clustering_knn.py`.
+
 # Results
 
 Running on 990 data points, the clustering results in the following example results. The pixel clustering only required the images to be loaded and normalised for pixel intensity. The text embedding first required an embedding to be trained (here I only used 10 nodes) and these weights are then loaded and summed to give a point in vector space for each caption which is subsequently used for the clustering.
