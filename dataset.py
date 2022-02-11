@@ -1,6 +1,7 @@
 import glob
 import re
 from utils import generate_pairs
+import numpy as np
 
 
 class photo(object):
@@ -11,6 +12,7 @@ class photo(object):
 		self.name = name
 		self.text = text
 		self.data = None
+		self.embedding_sum = []
 
 		# Additional manipulation
 		self.pair = []
@@ -78,9 +80,10 @@ class dataset(object):
 		for line in description_file.readlines():
 			# Split to get the image name and caption number
 			try:
+				# Some bad information is possible, so just alert when running
 				key,val,description = line.split("|")
 			except:
-				print (line)
+				print (f"Error in parsing -> {line}")
 				continue
 			# Construct list in dictionary
 			if key not in description_dict:
@@ -129,6 +132,23 @@ class dataset(object):
 	def get_train_valid(self, nVal):
 		# Split our dataset into a training and validation set
 		return self.photos[:nVal], self.photos[nVal:]
+
+	def calculate_embedding(self, embedding):
+		# We have the vocab -> embedding weights
+		for p in self.photos:
+			for text in p.cleaned_text:
+				words = text.split()
+				# To cover any unknown words somehow making it through
+				score = [embedding[x] for x in words if x in embedding]
+				# Sum down columns
+				score = np.sum(score, axis=0)
+				# Append
+				p.embedding_sum.append(score)
+			# Flatten
+			p.embedding_sum = np.concatenate(p.embedding_sum).ravel()
+
+
+
 
 
 					

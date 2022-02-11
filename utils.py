@@ -34,7 +34,7 @@ def get_unique_words(dataset):
 	print (f"{len(unique_word_dict)} unique words")
 	return unique_word_dict, all_words
 
-def generate_similar_image(x, ind, X_train):
+def generate_similar_image(x, ind, X_train, text=False):
 	import cv2
 	from matplotlib import pyplot as plt
 
@@ -47,6 +47,8 @@ def generate_similar_image(x, ind, X_train):
 	plt.imshow(image)
 	plt.axis('off')
 	plt.title("Query")
+	if text:
+		plt.title("Query \n"+x.text[0])
 	print (f"{x.name} similar to ")
 	for iim,i in enumerate(ind):
 		print (f"  {i} ... {X_train[i].name}")
@@ -54,7 +56,12 @@ def generate_similar_image(x, ind, X_train):
 		fig.add_subplot(rows, columns, iim+6)
 		plt.imshow(image)
 		plt.axis('off')
+		#if text:
+		#	plt.title(X_train[i].text[0])
 	# Save
 	img_name = x.name.split("/")[-1]
-	plt.savefig(f"similar_images/similar_{img_name}.pdf")
+	if text:
+		plt.savefig(f"similar_text/similar_{img_name}.pdf")
+	else:		
+		plt.savefig(f"similar_images/similar_{img_name}.pdf")
 
