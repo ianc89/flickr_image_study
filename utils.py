@@ -76,7 +76,7 @@ def initialise_results(outdir, result_name, n_neighbours):
 	outfile = open(outdir+result_name,"w")
 	outfile.write("target,")
 	for x in range(n_neighbours):
-		outfile.write(str(x)+",")
+		outfile.write("image_"+str(x)+",")
 	outfile.write("\n")
 
 def write_results(target, list_of_similar, outdir, result_name):
