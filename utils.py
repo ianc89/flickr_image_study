@@ -72,12 +72,12 @@ def initialise_results(outdir, result_name, n_neighbours):
 	# Clean the output folder
 	subprocess.call(f"rm -f {outdir}/*", shell=True)
 
-	# Write the header
-	outfile = open(outdir+result_name,"w")
-	outfile.write("target,")
-	for x in range(n_neighbours):
-		outfile.write("image_"+str(x)+",")
-	outfile.write("\n")
+	# Write the header - Not parsed by tableau
+	# outfile = open(outdir+result_name,"w")
+	# outfile.write("target,")
+	# for x in range(n_neighbours):
+	# 	outfile.write("image_"+str(x)+",")
+	# outfile.write("\n")
 
 def write_results(target, list_of_similar, outdir, result_name):
 	import subprocess
