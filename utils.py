@@ -65,3 +65,32 @@ def generate_similar_image(x, ind, X_train, text=False):
 	else:		
 		plt.savefig(f"similar_images/similar_{img_name}.png")
 
+
+def initialise_results(outdir, result_name, n_neighbours):
+	import subprocess
+
+	# Clean the output folder
+	subprocess.call(f"rm -f {outdir}/*", shell=True)
+
+	# Write the header
+	outfile = open(outdir+result_name,"w")
+	outfile.write("target,")
+	for x in range(n_neighbours):
+		outfile.write(str(x)+",")
+	outfile.write("\n")
+
+def write_results(target, list_of_similar, outdir, result_name):
+	import subprocess
+	
+	# Write a csv file
+	target_name   = target.name.split("/")[-1]
+	similar_names = ",".join([x.name.split("/")[-1] for x in list_of_similar])
+	outfile = open(outdir+result_name,"a")
+	outfile.write(f"{target_name},{similar_names}\n")
+
+	# Copy images to a single location
+	subprocess.call(f"cp {target.name} forTableau/", shell=True)
+	for x in list_of_similar:
+		subprocess.call(f"cp {x.name} forTableau/", shell=True)
+
+

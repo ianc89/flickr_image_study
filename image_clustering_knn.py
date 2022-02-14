@@ -3,7 +3,7 @@ from dataset import dataset
 # kNN algorithm
 from sklearn.neighbors import NearestNeighbors
 # Tools
-from utils import generate_similar_image
+from utils import generate_similar_image, write_results, initialise_results
 
 # Preamble - Load data
 d = dataset()
@@ -23,11 +23,15 @@ nbrs = NearestNeighbors(n_neighbors=10, algorithm='ball_tree').fit(X_train_data)
 # Query an image
 distances, indices = nbrs.kneighbors(X_val_data)
 
+# Initialise result folder
+initialise_results("forTableau/","results.csv",10)
 
 # Loop over the zipped validation file and associated neighbour indices
 for x,ind in zip(X_val, indices):
 	# Produce an output image
 	generate_similar_image(x, ind, X_train)
+	write_results(x, [X_train[y] for y in ind], "forTableau/","results.csv")
+
 
 
 
