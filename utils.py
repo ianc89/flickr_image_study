@@ -86,8 +86,9 @@ def write_results(target, list_of_similar, outdir, result_name):
 	import subprocess
 	
 	# Write a csv file
-	target_name   = target.name.split("/")[-1]
-	similar_names = ",".join([x.name.split("/")[-1] for x in list_of_similar])
+	url_base ="https://raw.githubusercontent.com/ianc89/flickr_image_study/main/forTableau/"
+	target_name   = url_base+target.name.split("/")[-1]
+	similar_names = ",".join([url_base+x.name.split("/")[-1] for x in list_of_similar])
 	outfile = open(outdir+result_name,"a")
 	outfile.write(f"{target_name},{similar_names}\n")
 
