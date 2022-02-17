@@ -27,7 +27,11 @@ As a small test of using Tableau, the results are also written to a csv file and
 
 [Link to published Tableau dashboard](https://public.tableau.com/views/flickr_image_display/Dashboard1?:language=en-GB&:display_count=n&:origin=viz_share_link)
 
-The word embedding can also be visualised in [this public Tableau dashboard](https://public.tableau.com/shared/BZKPX7F4Y?:display_count=n&:origin=viz_share_link) where the embedding is projected across two dimensions and is interactive allowing the user to select different dimensions to explore the patterns.
+![screenshot](screenshot_tableau_simimg.png)
+
+The word embedding can also be visualised in [this public Tableau dashboard](https://public.tableau.com/shared/BZKPX7F4Y?:display_count=n&:origin=viz_share_link) where the embedding is projected across two dimensions and is interactive allowing the user to select different dimensions to explore the patterns. The python object was rewritten to a csv file to allow Tableau to access the data points.
+
+![screenshot](screenshot_tableau_wordembed.png)
 
 # Results
 
